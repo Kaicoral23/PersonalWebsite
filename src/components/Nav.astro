@@ -1,0 +1,272 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+const currentPath = Astro.url.pathname;
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/portfolio/', label: 'Portfolio' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<header class="site-header">
+  <nav class="nav container" aria-label="Main navigation">
+    <a href="/" class="nav-logo">Kai Coral</a>
+    <div class="nav-drawer" id="nav-drawer">
+      <div class="nav-drawer-inner">
+        <ul class="nav-links">
+          {navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[currentPath === href || (href !== '/' && currentPath.startsWith(href)) ? 'active' : '']}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="nav-drawer-theme">
+          <ThemeToggle />
+        </div>
+      </div>
+    </div>
+    <div class="nav-desktop-actions">
+      <ThemeToggle />
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span class="hamburger"></span>
+    </button>
+  </nav>
+  <div class="nav-backdrop" aria-hidden="true"></div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-header-bg);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color var(--theme-duration) ease, border-color var(--theme-duration) ease;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4rem;
+    position: relative;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--color-text);
+  }
+
+  .nav-logo:hover {
+    color: var(--color-accent);
+  }
+
+  /* Mobile: drawer + hamburger */
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(20rem, 85vw);
+    height: 100vh;
+    background: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    z-index: 101;
+    transition: background-color var(--theme-duration) ease, border-color var(--theme-duration) ease;
+    padding: 5rem var(--space-lg) var(--space-lg);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+  }
+
+  .nav.open .nav-drawer {
+    transform: translateX(0);
+  }
+
+  .nav-drawer-theme {
+    margin-top: auto;
+    padding-top: var(--space-md);
+  }
+
+  .nav-desktop-actions {
+    display: none;
+  }
+
+  .nav-drawer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    min-height: 100%;
+  }
+
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--color-overlay);
+    z-index: 100;
+    transition: opacity 0.3s ease, background-color var(--theme-duration) ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .nav.open .nav-backdrop {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: var(--space-sm) 0;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 1.125rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--color-text);
+  }
+
+  .nav-links a.active {
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-sm);
+  }
+
+  .nav-toggle {
+    background: none;
+    border: none;
+    padding: var(--space-xs);
+    cursor: pointer;
+    color: var(--color-text);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 102;
+    position: relative;
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    display: block;
+    width: 1.25rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+  }
+
+  .hamburger {
+    position: relative;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .hamburger::before { top: -6px; }
+  .hamburger::after { top: 6px; }
+
+  /* Desktop: inline links, hide hamburger and drawer behavior */
+  @media (min-width: 640px) {
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-backdrop {
+      display: none !important;
+    }
+
+    .nav-drawer-theme {
+      display: none;
+    }
+
+    .nav-desktop-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .nav-drawer {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 0;
+      transform: none;
+      background: transparent;
+      border: none;
+      overflow: visible;
+    }
+
+    .nav-drawer-inner {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .nav.open .nav-drawer {
+      transform: none;
+    }
+
+    .nav-links {
+      flex-direction: row;
+      gap: var(--space-md);
+    }
+
+    .nav-links a {
+      padding: 0;
+      font-size: 1rem;
+    }
+
+    .nav-links a.active {
+      border-left: none;
+      padding-left: 0;
+      border-bottom: 2px solid var(--color-accent);
+    }
+  }
+</style>
+
+<script>
+  function toggleDrawer(open) {
+    const nav = document.querySelector('.nav');
+    const btn = document.querySelector('.nav-toggle');
+    if (open == null) {
+      nav?.classList.toggle('open');
+    } else if (open) {
+      nav?.classList.add('open');
+    } else {
+      nav?.classList.remove('open');
+    }
+    const isOpen = nav?.classList.contains('open');
+    btn?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  document.querySelector('.nav-toggle')?.addEventListener('click', () => toggleDrawer());
+
+  document.querySelector('.nav-backdrop')?.addEventListener('click', () => toggleDrawer(false));
+</script>

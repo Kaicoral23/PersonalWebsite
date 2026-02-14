@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "title": "Sample Reel",
+    "description": "Short-form video piece. Replace with your own content.",
+    "url": "https://instagram.com",
+    "platform": "Instagram",
+    "thumbnail": "",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Sample TikTok",
+    "description": "Another example. Add your real links and thumbnails.",
+    "url": "https://tiktok.com",
+    "platform": "TikTok",
+    "thumbnail": "",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "YouTube Short",
+    "description": "Quick vertical video for YouTube.",
+    "url": "https://youtube.com",
+    "platform": "YouTube",
+    "thumbnail": "",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "title": "Project Four",
+    "description": "Description for your fourth piece.",
+    "url": "#",
+    "platform": "Other",
+    "thumbnail": "",
+    "featured": false
+  },
+  {
+    "id": "5",
+    "title": "Project Five",
+    "description": "Description for your fifth piece.",
+    "url": "#",
+    "platform": "Other",
+    "thumbnail": "",
+    "featured": false
+  },
+  {
+    "id": "6",
+    "title": "Project Six",
+    "description": "Description for your sixth piece.",
+    "url": "#",
+    "platform": "Other",
+    "thumbnail": "",
+    "featured": false
+  }
+]

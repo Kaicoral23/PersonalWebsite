@@ -1,0 +1,63 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">
+      © {currentYear} Kai Coral. All rights reserved.
+    </p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+    transition: background-color var(--theme-duration) ease, border-color var(--theme-duration) ease, color var(--theme-duration) ease;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .footer-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .footer-copy {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .footer-nav a {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-text);
+  }
+</style>

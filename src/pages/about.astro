@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About | Kai Coral" description="About Kai Coral. Creator, content maker, and who I am.">
+  <article class="about container">
+    <div class="about-content">
+      <h1>About me</h1>
+      <div class="about-photo-wrap">
+        <div class="about-photo-placeholder" aria-hidden="true">
+          <span>Photo</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          I do social media and create cool content. This is my little corner of the internet where I share what I make and who I am.
+        </p>
+        <p>
+          Whether it’s short-form video, photos, or whatever’s next—I’m here to experiment, have fun, and connect with people who vibe with it.
+        </p>
+      </div>
+      <section class="about-social" aria-label="Where to find me">
+        <h2>Where you can find me</h2>
+        <ul class="social-links">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+          <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        </ul>
+        <p class="social-note">Replace these links with your real profiles in <code>src/pages/about.astro</code>.</p>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .about-content {
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .about-content h1 {
+    margin: 0 0 var(--space-lg);
+  }
+
+  .about-photo-wrap {
+    margin-bottom: var(--space-lg);
+  }
+
+  .about-photo-placeholder {
+    aspect-ratio: 1;
+    max-width: 16rem;
+    margin-inline: auto;
+    background: var(--color-surface);
+    border: 2px dashed var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  .about-text {
+    margin-bottom: var(--space-xl);
+  }
+
+  .about-text p {
+    margin: 0 0 var(--space-md);
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-social h2 {
+    margin: 0 0 var(--space-sm);
+    font-size: 1.125rem;
+  }
+
+  .social-links {
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .social-links a {
+    font-weight: 500;
+  }
+
+  .social-note {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .social-note code {
+    background: var(--color-surface);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+  }
+</style>

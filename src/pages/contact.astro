@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact | Kai Coral" description="Get in touch with Kai Coral. Send a message or reach out on socials.">
+  <div class="container">
+    <div class="contact-wrap">
+      <header class="contact-header">
+        <h1>Contact</h1>
+        <p class="contact-intro">
+          Have a question or want to collab? Send me a message below or DM me on
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>.
+        </p>
+      </header>
+      <div class="contact-methods">
+        <section class="contact-form-section">
+          <h2>Send a message</h2>
+          <form
+            class="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </form>
+        </section>
+        <aside class="contact-other">
+          <h2>Or reach me here</h2>
+          <ul class="contact-links">
+            <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram DM</a></li>
+          </ul>
+          <p class="contact-note">Replace with your real email and links in <code>src/pages/contact.astro</code>.</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-wrap {
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .contact-header h1 {
+    margin: 0 0 var(--space-sm);
+  }
+
+  .contact-intro {
+    margin: 0 0 var(--space-xl);
+    color: var(--color-text-muted);
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .contact-methods {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: var(--space-2xl);
+    }
+
+    .contact-form-section {
+      flex: 1;
+    }
+
+    .contact-other {
+      min-width: 14rem;
+    }
+  }
+
+  .contact-form-section h2,
+  .contact-other h2 {
+    margin: 0 0 var(--space-md);
+    font-size: 1.125rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .hidden {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font: inherit;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    width: 100%;
+    transition: background-color var(--theme-duration) ease, border-color var(--theme-duration) ease, color var(--theme-duration) ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 6rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    align-self: flex-start;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-button-text);
+    transition: background var(--theme-duration) ease, color var(--theme-duration) ease, transform 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .contact-links {
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+  }
+
+  .contact-links li {
+    margin-bottom: var(--space-xs);
+  }
+
+  .contact-note {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .contact-note code {
+    background: var(--color-surface);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+  }
+</style>

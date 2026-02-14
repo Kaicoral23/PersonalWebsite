@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PortfolioCard from '../components/PortfolioCard.astro';
+import portfolioData from '../data/portfolio.json';
+---
+
+<Layout title="Portfolio | Kai Coral" description="Portfolio of Kai Coral. Best content from social media and beyond.">
+  <div class="container">
+    <header class="portfolio-header">
+      <h1>Portfolio</h1>
+      <p class="portfolio-intro">A selection of my favorite work. Click through to watch on the platform.</p>
+    </header>
+    <div class="portfolio-grid">
+      {portfolioData.map((item) => (
+        <PortfolioCard
+          title={item.title}
+          description={item.description}
+          url={item.url}
+          platform={item.platform}
+          thumbnail={item.thumbnail || undefined}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .portfolio-header {
+    margin-bottom: var(--space-xl);
+    max-width: 42rem;
+  }
+
+  .portfolio-header h1 {
+    margin: 0 0 var(--space-sm);
+  }
+
+  .portfolio-intro {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

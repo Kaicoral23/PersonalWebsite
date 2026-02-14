@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout title="Kai Coral | Creator & Content" description="Homepage of Kai Coral. Social media creator and cool content. Explore my portfolio and get in touch.">
+  <Hero
+    title="Kai Coral"
+    tagline="Creator & cool content"
+    intro="I make stuff for the internet. Welcome to my corner—explore my work and say hi."
+  />
+  <section class="container featured">
+    <h2 class="section-title">Quick links</h2>
+    <div class="quick-links">
+      <a href="/portfolio/" class="quick-link card">
+        <span class="quick-link-label">Portfolio</span>
+        <span class="quick-link-desc">See my best content</span>
+      </a>
+      <a href="/about/" class="quick-link card">
+        <span class="quick-link-label">About</span>
+        <span class="quick-link-desc">Who I am & what I do</span>
+      </a>
+      <a href="/contact/" class="quick-link card">
+        <span class="quick-link-label">Contact</span>
+        <span class="quick-link-desc">Get in touch</span>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .featured {
+    padding-block: var(--space-xl);
+  }
+
+  .section-title {
+    margin: 0 0 var(--space-lg);
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .quick-links {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .quick-links {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .quick-link {
+    display: block;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: background-color var(--theme-duration) ease, border-color var(--theme-duration) ease, transform 0.15s ease;
+  }
+
+  .quick-link:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .quick-link-label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .quick-link-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+</style>
